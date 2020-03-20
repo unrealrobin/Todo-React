@@ -12,13 +12,17 @@ class ListItemForm extends React.Component {
 		this.props.undisplayForm();
 	};
 
+	handleTitle = e => {
+		// this.setState({listItem.title: event.target.value})
+	};
+
 	render() {
 		return (
 			<div>
 				<form>
 					<label>Title</label>
 					<br />
-					<input type="text" value={this.state.listItem.title}></input>
+					<input type="text" value={this.state.listItem.title} onChange={this.handleTitle}></input>
 					<label>Complete By:</label>
 					<br />
 					<input type="date" value={this.state.listItem.date}></input>
