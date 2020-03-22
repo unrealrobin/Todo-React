@@ -21,11 +21,7 @@ class App extends React.Component {
         <ProjectForm getProject={this.getProject} />
         {this.state.showProject &&
           this.state.projects.map((project, idx) => {
-            return (
-              <div key={idx}>
-                <h1>{project.title}</h1>
-              </div>
-            );
+            return <Project title={project.title} key={idx} />;
           })}
       </div>
     );

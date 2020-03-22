@@ -2,18 +2,21 @@ import React from 'react';
 
 class ListItemForm extends React.Component {
   state = {
-    listItem: {
-      title: '',
-      date: ''
-    }
+    title: '',
+    date: ''
   };
 
   handleSubmit = () => {
     this.props.undisplayForm();
+    this.props.getTask(this.state);
   };
 
   handleTitle = e => {
-    // this.setState({listItem.title: event.target.value})
+    this.setState({ title: e.target.value });
+  };
+
+  handleDate = e => {
+    this.setState({ date: e.target.value });
   };
 
   render() {
@@ -22,10 +25,10 @@ class ListItemForm extends React.Component {
         <form>
           <label>Title</label>
           <br />
-          <input type="text" value={this.state.listItem.title} onChange={this.handleTitle}></input>
+          <input type="text" value={this.state.title} onChange={this.handleTitle}></input>
           <label>Complete By:</label>
           <br />
-          <input type="date" value={this.state.listItem.date}></input>
+          <input type="date" value={this.state.date} onChange={this.handleDate}></input>
           <input type="submit" value="Submit" onClick={this.handleSubmit}></input>
         </form>
       </div>

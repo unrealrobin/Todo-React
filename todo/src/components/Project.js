@@ -4,7 +4,8 @@ import ListItemForm from './ListItemForm';
 
 class Project extends React.Component {
   state = {
-    showForm: false
+    showForm: false,
+    listItems: []
   };
 
   displayForm = () => {
@@ -15,17 +16,29 @@ class Project extends React.Component {
     this.setState({ showForm: false });
   };
 
-  render() {
-    const { title } = this.props;
+  getTaskInfo = task => {
+    this.setState({ listItems: [...this.state.listItems, task] }, () => {
+      console.log(this.state.listItems);
+    });
+  };
 
+  render() {
     return (
       <div>
         <div>
-          <h1>{title}</h1>
+          <h1>{this.props.title}</h1>
+        </div>
+        <div>
+          {this.state.listItems.length > 0 &&
+            this.state.listItems.map(items => {
+              return <TodoItem name={items.title} date={items.date} />;
+            })}
         </div>
         <div>
           <button onClick={this.displayForm}>Create Todo Item</button>
-          {this.state.showForm && <ListItemForm undisplayForm={this.undisplayForm} />}
+          {this.state.showForm && (
+            <ListItemForm undisplayForm={this.undisplayForm} getTask={this.getTaskInfo} />
+          )}
         </div>
       </div>
     );

@@ -1,10 +1,10 @@
 import React from 'react';
 
-const TodoItem = () => {
+const TodoItem = props => {
   return (
     <div>
-      <h1> Todo Title</h1>
-      <h3>Todo Description</h3>
+      <h2>{props.name}</h2>
+      <h3>{props.date}</h3>
     </div>
   );
 };
