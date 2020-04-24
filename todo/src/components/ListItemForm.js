@@ -3,7 +3,7 @@ import React from 'react';
 class ListItemForm extends React.Component {
   state = {
     title: '',
-    date: ''
+    date: '',
   };
 
   handleSubmit = () => {
@@ -11,11 +11,11 @@ class ListItemForm extends React.Component {
     this.props.getTask(this.state);
   };
 
-  handleTitle = e => {
+  handleTitle = (e) => {
     this.setState({ title: e.target.value });
   };
 
-  handleDate = e => {
+  handleDate = (e) => {
     this.setState({ date: e.target.value });
   };
 

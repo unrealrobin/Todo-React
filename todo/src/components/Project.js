@@ -5,7 +5,7 @@ import ListItemForm from './ListItemForm';
 class Project extends React.Component {
   state = {
     showForm: false,
-    listItems: []
+    listItems: [],
   };
 
   displayForm = () => {
@@ -16,7 +16,7 @@ class Project extends React.Component {
     this.setState({ showForm: false });
   };
 
-  getTaskInfo = task => {
+  getTaskInfo = (task) => {
     this.setState({ listItems: [...this.state.listItems, task] }, () => {
       console.log(this.state.listItems);
     });
@@ -24,14 +24,14 @@ class Project extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="project-group">
         <div>
           <h1>{this.props.title}</h1>
         </div>
         <div>
           {this.state.listItems.length > 0 &&
-            this.state.listItems.map(items => {
-              return <TodoItem name={items.title} date={items.date} />;
+            this.state.listItems.map((items, idx) => {
+              return <TodoItem name={items.title} date={items.date} key={`item` + idx} />;
             })}
         </div>
         <div>

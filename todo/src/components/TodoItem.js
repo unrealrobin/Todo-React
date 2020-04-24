@@ -1,8 +1,8 @@
 import React from 'react';
 
-const TodoItem = props => {
+const TodoItem = (props) => {
   return (
-    <div>
+    <div className="project-item">
       <h2>{props.name}</h2>
       <h3>{props.date}</h3>
     </div>

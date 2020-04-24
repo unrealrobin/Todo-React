@@ -4,16 +4,16 @@ import TodoItem from './TodoItem';
 class ProjectForm extends React.Component {
   state = {
     project: {
-      title: ''
-    }
+      title: '',
+    },
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     const { title } = this.state.project;
     this.setState({ project: { title: event.target.value } });
   };
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     const { getProject } = this.props;
 
     e.preventDefault();
@@ -22,7 +22,7 @@ class ProjectForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="form-container">
         <form onSubmit={this.handleSubmit}>
           <label>List Group Title : </label>
           <br />
