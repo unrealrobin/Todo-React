@@ -14,10 +14,9 @@ class ProjectForm extends React.Component {
   };
 
   handleSubmit = (e) => {
-    const { getProject } = this.props;
-
+    const { submitTitle } = this.props;
     e.preventDefault();
-    getProject(this.state.project);
+    submitTitle(this.state.project);
   };
 
   render() {

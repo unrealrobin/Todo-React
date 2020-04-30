@@ -1,4 +1,7 @@
 import React from 'react';
+import Moment from 'react-moment';
+import moment from 'moment';
+import StorageService from '../utils/StorageService';
 
 class ListItemForm extends React.Component {
   state = {
@@ -7,6 +10,7 @@ class ListItemForm extends React.Component {
   };
 
   handleSubmit = () => {
+    StorageService.setItems(this.state, this.props.projectTitle);
     this.props.undisplayForm();
     this.props.getTask(this.state);
   };

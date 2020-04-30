@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ProjectForm from './components/ProjectForm';
 import Project from './components/Project';
+import StorageService from './utils/StorageService';
 import './App.scss';
 
 class App extends React.Component {
@@ -10,19 +11,27 @@ class App extends React.Component {
     showProject: false,
   };
 
+  componentDidMount = () => {
+    const projects = JSON.parse(StorageService.getProjects());
+    this.setState({ projects: projects || [], showProject: true });
+  };
+
   getProject = (project) => {
-    this.setState({ projects: [...this.state.projects, project], showProject: true }, () => {
-      console.log(this.state.projects);
-    });
+    const { projects } = this.state;
+    StorageService.setProject(project.title);
+    this.setState({ projects: [...projects, project], showProject: true });
   };
 
   render() {
+    //destructure state at top of render/any methods
+    const { showProject, projects } = this.state;
     return (
       <div className="main">
         <h1>Robin's To-Do List</h1>
-        <ProjectForm getProject={this.getProject} />
-        {this.state.showProject &&
-          this.state.projects.map((project, idx) => {
+        <ProjectForm submitTitle={this.getProject} />
+        {showProject &&
+          projects &&
+          projects.map((project, idx) => {
             return <Project title={project.title} key={`project` + idx} />;
           })}
       </div>
