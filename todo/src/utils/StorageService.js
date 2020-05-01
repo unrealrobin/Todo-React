@@ -8,7 +8,7 @@ const StorageService = {
     if (!storedProjects) {
       storedProjects = [];
     }
-    window.localStorage.setItem(title, JSON.stringify([{ title }, ...storedProjects]));
+    window.localStorage.setItem('projects', JSON.stringify([{ title }, ...storedProjects]));
   },
 
   setItems(itemObj, projectName) {

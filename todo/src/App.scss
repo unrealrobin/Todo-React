@@ -26,25 +26,40 @@ body {
 }
 
 .low-urgency {
-  border: 3px solid rgb(190, 255, 149);
+  background-color: rgb(190, 255, 149);
 }
 
 .med-urgency {
-  border: 3px solid rgb(255, 243, 149);
+  background-color: rgb(255, 243, 149);
 }
 
 .high-urgency {
-  border: 3px solid rgb(255, 149, 149);
+  background-color: rgb(255, 149, 149);
 }
-
-.overdue {
-  border: 5px solid rgb(255, 149, 149);
-}
-
 .project-group {
   border: 1px solid grey;
   border-radius: 10px;
   margin: 20px;
   padding: 8px;
   min-width: 475px;
+}
+.todo-info {
+  width: 75%;
+}
+.todos {
+  display: flex;
+  flex-direction: row;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border: 1px solid rgb(201, 201, 201);
+  border-radius: 5px;
+}
+.urgencycut {
+  clip-path: polygon(50% 0, 100% 0, 100% 100%, 0% 100%);
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  font-size: 20px;
 }
