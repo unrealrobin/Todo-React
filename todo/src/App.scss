@@ -45,6 +45,7 @@ body {
 }
 .todo-info {
   width: 75%;
+  padding-left: 8px;
 }
 .todos {
   display: flex;
@@ -56,10 +57,19 @@ body {
 }
 .urgencycut {
   clip-path: polygon(50% 0, 100% 0, 100% 100%, 0% 100%);
+  transition: clip-path 0.8s;
   width: 25%;
   display: flex;
   justify-content: center;
   align-items: center;
+  text-align: right;
   color: black;
   font-size: 20px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.removeClassStyle {
+  background-color: rgb(77, 148, 255);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
 }

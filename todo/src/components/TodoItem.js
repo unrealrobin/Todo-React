@@ -3,7 +3,7 @@ import moment from 'moment';
 
 let duration;
 const TodoItem = (props) => {
-  const handleSetUrgency = () => {
+  const handleSetUrgency = (needDuration) => {
     let dueDate = moment(props.date);
     let todaysDate = moment();
     duration = Math.ceil(dueDate.diff(todaysDate, 'days', true));
@@ -15,18 +15,38 @@ const TodoItem = (props) => {
     } else if (duration < 3) {
       urgency = 'high-urgency';
     }
-    return urgency;
+    if (needDuration) {
+      return duration;
+    } else {
+      return urgency;
+    }
+  };
+  setInterval(handleSetUrgency(), 1000 * 60 * 60 * 12);
+
+  const removeTaskStyle = (e) => {
+    e.target.classList.add('removeClassStyle');
+    e.target.textContent = 'complete';
   };
 
-  setInterval(handleSetUrgency(), 1000 * 60 * 60 * 12);
+  const implementTaskStyle = (e) => {
+    e.target.classList.remove('removeClassStyle');
+    e.target.textContent = handleSetUrgency(true);
+  };
 
   return (
     <div className="todos">
       <div className="todo-info">
         <h2>{props.name}</h2>
-        <h3>{props.date}</h3>
+        <h3>Due: {moment(props.date).format('MMM Do YYYY')}</h3>
       </div>
-      <div className={`${handleSetUrgency()} urgencycut`}>
+      <div
+        className={`${handleSetUrgency()} urgencycut`}
+        onMouseEnter={removeTaskStyle}
+        onMouseOut={implementTaskStyle}
+        onClick={function () {
+          props.remove(props.name);
+        }}
+      >
         <h3>{duration}</h3>
       </div>
     </div>

@@ -28,6 +28,12 @@ class Project extends React.Component {
     this.setState({ listItems: [newtask, ...this.state.listItems] });
   };
 
+  remove = (el) => {
+    console.log(` ${el} will be removed`);
+    let removedTask = this.state.listItems.filter((item) => item.title !== el);
+    this.setState({ listItems: removedTask });
+  };
+
   render() {
     return (
       <div className={`${this.props.title} project-group`}>
@@ -37,7 +43,14 @@ class Project extends React.Component {
         <div>
           {this.state.listItems &&
             this.state.listItems.map((items, idx) => {
-              return <TodoItem name={items.title} date={items.date} key={`item` + idx} />;
+              return (
+                <TodoItem
+                  name={items.title}
+                  date={items.date}
+                  remove={this.remove}
+                  key={`item` + idx}
+                />
+              );
             })}
         </div>
         <div>
